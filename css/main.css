@@ -1,0 +1,13 @@
+.token {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.token_selected {
+  fill: #aaaaaa;
+}
+
+.token_taken {
+  opacity: 0;
+}
+/*# sourceMappingURL=main.css.map */

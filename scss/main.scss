@@ -1,0 +1,12 @@
+.token {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+
+  &_selected {
+    fill: #aaaaaa;
+  }
+
+  &_taken {
+    opacity: 0;
+  }
+}
