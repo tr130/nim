@@ -19,7 +19,7 @@ export default class Game {
   svgSpace.setAttributeNS(null, "y", 0);
   svgSpace.setAttributeNS(null, "height", 600);
   svgSpace.setAttributeNS(null, "width", 480);
-  svgSpace.setAttributeNS(null, "fill", "red");
+  svgSpace.setAttributeNS(null, "fill", "blue");
   svgSpace.setAttributeNS(null, "stroke", "none");
   document.getElementById("game-board").appendChild(svgSpace);
     for (let i = 0; i < 4; i++) {
