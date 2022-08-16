@@ -4,20 +4,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Raleway|Raleway+Dots">
   <link rel="stylesheet" href='css/main.css'>
   <title>Nim</title>
 </head>
 <body>
-  <div class="game_board">
-    <svg id = "game-board" height = "600" width = "480">
-              
+  <div class="game_container">
+    <div class="game_header">
+      <h1>Nim</h1>
+    </div>
+    <div class="game_board">
+    </div>
+    <div class="game_controls">
+      <button id="newGame">New Game</button>
+      <button id="make_move" class="human_move" disabled>Make move</button>
+      <button id="instructions">Instructions</button>
+    </div>
+  </div>
+  <div class="instructions_container">
+    <div class="instructions_main">
+      <div class="instructions_header">
+           <h2>Instructions</h2>
+      </div>
+   
+      <div class="instructions_text">
+              <p>Take turns to remove as many counters as you wish from one row.</p>
+      <p>The player who removes the final counter loses the game.</p>
+      </div>
 
-</svg>
+    </div> 
   </div>
-  <div class="game_controls">
-    <button id="newGame">New Game</button>
-    <button class="human_move">Make move</button>
-  </div>
+  
   <script type="module" src="nim.js"></script>
 </body>
 </html>

@@ -1,13 +1,107 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: gray;
+  overflow: hidden;
+}
+
 .token {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+  border-radius: 50%;
+  background-color: blueviolet;
 }
 
 .token_selected {
-  fill: #aaaaaa;
+  background-color: #aaaaaa;
 }
 
 .token_taken {
   opacity: 0;
+}
+
+.game_container {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.game_header {
+  text-align: center;
+}
+
+.game_header h1 {
+  color: red;
+  font-family: 'Raleway Dots', sans-serif;
+}
+
+.game_board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.game_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.game_controls {
+  display: flex;
+  justify-content: center;
+}
+
+.game_controls button {
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0;
+  border: none;
+  font-family: Raleway, sans-serif;
+}
+
+.instructions_container {
+  display: none;
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  justify-content: center;
+}
+
+.instructions_on {
+  display: flex;
+}
+
+.instructions_main {
+  font-family: Raleway, sans-serif;
+  margin: 10vw 5vw;
+  width: 50vw;
+  background-color: black;
+  opacity: 50%;
+  color: red;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.instructions_main h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5rem;
+}
+
+.instructions_main p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  opacity: 100%;
 }
 /*# sourceMappingURL=main.css.map */

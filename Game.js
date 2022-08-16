@@ -13,22 +13,25 @@ export default class Game {
 
   createTokens() {
     let tokens = [];
-    document.getElementById('game-board').textContent = '';
-    const svgSpace = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  svgSpace.setAttributeNS(null, "x", 0);
-  svgSpace.setAttributeNS(null, "y", 0);
-  svgSpace.setAttributeNS(null, "height", 600);
-  svgSpace.setAttributeNS(null, "width", 480);
-  svgSpace.setAttributeNS(null, "fill", "blue");
-  svgSpace.setAttributeNS(null, "stroke", "none");
-  document.getElementById("game-board").appendChild(svgSpace);
+  //   document.getElementById('game-board').textContent = '';
+  //   const svgSpace = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  // svgSpace.setAttributeNS(null, "x", 0);
+  // svgSpace.setAttributeNS(null, "y", 0);
+  // svgSpace.setAttributeNS(null, "height", 600);
+  // svgSpace.setAttributeNS(null, "width", 480);
+  // svgSpace.setAttributeNS(null, "fill", "blue");
+  // svgSpace.setAttributeNS(null, "stroke", "none");
+  // document.getElementById("game-board").appendChild(svgSpace);
     for (let i = 0; i < 4; i++) {
+      const rowDiv = document.createElement('div')
+      rowDiv.setAttribute("class", "game_row")
+      document.getElementsByClassName('game_board')[0].appendChild(rowDiv)
       let limit = 2*i + 1;
       let row = [];
       for (let j = 0; j < limit; j++) {
         console.log(`${i}-${j}`)
         let token = new Token(i,j);
-        token.drawToken();
+        token.drawToken(rowDiv);
         row.push(token);
      }
      tokens.push(row);
@@ -48,10 +51,16 @@ export default class Game {
     let col = token.id[2];
     this.humanPlayer.selectToken(this.tokens[row][col]);
     console.log(this.tokens);
+    if (this.humanPlayer.selectedTokens.length > 0) {
+      document.getElementById("make_move").removeAttribute("disabled")
+    }
   }
 
   humanMove() {
+    console.log("tokens...")
+    console.log(this.humanPlayer.selectedTokens)
     this.makeMove(this.humanPlayer.selectedTokens);
+    document.getElementById("make_move").setAttribute("disabled", "true")
     this.computerMove();
   }
 

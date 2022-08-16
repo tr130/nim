@@ -45,6 +45,7 @@ export default class ComputerPlayer {
 
   selectTokens(tokens) {
     let move = this.decideMove(tokens);
+    console.log(move)
     let row = move[0];
     let quantity = move[1];
     let selected = 0;
