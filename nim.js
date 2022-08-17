@@ -1,17 +1,8 @@
 import Game from './Game.js';
 
-function newgame() {
-  let gameInProgress;
-  try {
-    console.log(game.tokens)
-  } catch {
-    console.log("no game")
-  }
-
-  document.getElementsByClassName("game_board")[0].innerHTML = ""
-  let game = null;
-  game = new Game();
-  console.log(game.tokens);
+function newgame(e) {
+  document.getElementsByClassName("game_board")[0].innerHTML = "";
+  const game = new Game();
 
   //doing this rather than AddEventListener means EventListener is not
   //readded on a new game.
@@ -23,7 +14,10 @@ function newgame() {
     }
   }
 
-  setTimeout(function() { gameInProgress = true }, 2000)
+  if (e.target.id === "computer") {
+    game.computerMove();
+  }
+  
 }
 
 function showInstructions() {
@@ -40,5 +34,24 @@ function showInstructions() {
     })}, 20)
 }
 
-document.getElementById('newGame').addEventListener('click', newgame);
+function showNewGame() {
+  console.log('shownewgame')
+  let newGameVisible
+  document.getElementsByClassName("newgame_container")[0].classList.add("newgame_on")
+  newGameVisible = true
+  
+  setTimeout(function() {
+    document.addEventListener('click', function() {
+      if(newGameVisible == true) {
+        document.getElementsByClassName("newgame_container")[0].classList.remove("newgame_on")
+        newGameVisible = false
+      } 
+    })}, 20)
+}
+
+showNewGame();
+document.getElementById('newgame').addEventListener('click', showNewGame);
+document.getElementById('playagain').addEventListener('click', showNewGame);
 document.getElementById('instructions').addEventListener('click', showInstructions);
+document.getElementById("newgamep1").addEventListener('click', newgame);
+document.getElementById("newgamecomp").addEventListener('click', newgame);

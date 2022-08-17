@@ -17,7 +17,7 @@
     <div class="game_board" id="game-board">
     </div>
     <div class="game_controls">
-      <button id="newGame">New Game</button>
+      <button id="newgame">New Game</button>
       <button id="make_move" class="human_move" disabled>Make move</button>
       <button id="instructions">Instructions</button>
     </div>
@@ -34,6 +34,34 @@
       </div>
 
     </div> 
+  </div>
+  <div class="newgame_container">
+    <div class="newgame_main">
+      <div class="newgame_header">
+           <h2>New Game</h2>
+      </div>
+   
+      <div class="newgame_button" id="newgamep1">
+        <button id="human">I go first</button>
+      </div>
+      <div class="newgame_button" id="newgamecomp">
+        <button id="computer">The computer goes first</button>
+      </div>
+    </div> 
+  </div>
+
+  <div class="endgame_container">
+    <div class="endgame_main">
+      <div class="endgame_header">
+        <h2 id="endgame_header"></h2>
+      </div>
+      <div class="endgame_text">
+        <p id="endgame_message"></p>
+      </div>
+      <div class="endgame_button">
+        <button id="playagain">Play Again?</button>
+      </div>
+    </div>
   </div>
   
   <script type="module" src="nim.js"></script>

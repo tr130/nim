@@ -8,6 +8,7 @@ export default class ComputerPlayer {
       for (let token of tokens[i]) {
         if (token.present) {
           nimTotals[i]++;
+
         }
       }
     }
@@ -23,7 +24,6 @@ export default class ComputerPlayer {
     } else {
         // ^ is bitwise XOR
       let nimsum = nimTotals[0] ^ nimTotals[1] ^ nimTotals[2] ^ nimTotals[3];
-      console.log(nimsum)
 
       if (nimsum) {
         for (let i = 0; i < 4; i++) {
@@ -32,19 +32,21 @@ export default class ComputerPlayer {
           }
         }
       } else {
+        let nonZeroRows = []
         for (let i = 0; i < 4; i++) {
-          if (nimTotals[i]) {
-            return [i,1];
+          if (nimTotals[i] > 0) {
+            nonZeroRows.push(i)
           }
         }
+        let row = nonZeroRows[Math.floor(Math.random() * nonZeroRows.length)];
+        let quantity = Math.ceil(Math.random() * nimTotals[row])
+        return [row, quantity]
       }
     }
-
   }
 
   selectTokens(tokens) {
     let move = this.decideMove(tokens);
-    console.log(move)
     let row = move[0];
     let quantity = move[1];
     let selected = 0;
@@ -59,32 +61,3 @@ export default class ComputerPlayer {
 
 }
 
-// const tokens1 = [
-//   [
-//     {'present':1}
-//   ],
-//   [
-//     {'present':1},
-//     {'present':1},
-//     {'present':0}
-//   ],
-//   [
-//     {'present':1},
-//     {'present':0},
-//     {'present':0},
-//     {'present':0},
-//     {'present':0}
-//   ],
-//   [
-//     {'present':1},
-//     {'present':0},
-//     {'present':0},
-//     {'present':0},
-//     {'present':0},
-//     {'present':0},
-//     {'present':0}
-//   ]
-// ]
-
-// let player = new ComputerPlayer();
-// console.log(player.decideMove(tokens1));
