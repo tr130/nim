@@ -3,6 +3,7 @@ export default class Token {
     this.row = row;
     this.col = col;
     this.present = true;
+    this.selected = false;
     this.id = `${row}-${col}`
   }
 

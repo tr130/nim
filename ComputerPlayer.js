@@ -1,6 +1,5 @@
 export default class ComputerPlayer {
   constructor() {
-    this.selectedTokens = [];
   }
 
   decideMove(tokens) {
@@ -52,11 +51,10 @@ export default class ComputerPlayer {
     let rowLength = tokens[row].length;
     for (let i = rowLength - 1; selected < quantity; i--) {
       if ( tokens[row][i].present ) {
-        this.selectedTokens.push(tokens[row][i]);
+        tokens[row][i].selected = true;
         selected++;
       }
     }
-    return this.selectedTokens;
   }  
 
 }

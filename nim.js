@@ -1,17 +1,29 @@
 import Game from './Game.js';
 
 function newgame() {
+  let gameInProgress;
+  try {
+    console.log(game.tokens)
+  } catch {
+    console.log("no game")
+  }
+
   document.getElementsByClassName("game_board")[0].innerHTML = ""
-  let game = new Game();
+  let game = null;
+  game = new Game();
   console.log(game.tokens);
 
-  document.addEventListener('click', function(e) {
-    if (e.target.classList[0] === 'token') {
+  //doing this rather than AddEventListener means EventListener is not
+  //readded on a new game.
+  document.onclick = function(e) {
+    if (e.target.classList.contains('token')) {
       game.humanSelect(e.target);
     } else if (e.target.classList[0] === 'human_move') {
       game.humanMove();
     }
-  })
+  }
+
+  setTimeout(function() { gameInProgress = true }, 2000)
 }
 
 function showInstructions() {

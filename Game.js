@@ -5,7 +5,7 @@ import HumanPlayer from './HumanPlayer.js';
 
 export default class Game {
   constructor() {
-    this.board = new Board();
+    //this.board = new Board();
     this.tokens = this.createTokens();
     this.computerPlayer = new ComputerPlayer();
     this.humanPlayer = new HumanPlayer();
@@ -25,7 +25,7 @@ export default class Game {
     for (let i = 0; i < 4; i++) {
       const rowDiv = document.createElement('div')
       rowDiv.setAttribute("class", "game_row")
-      document.getElementsByClassName('game_board')[0].appendChild(rowDiv)
+      document.getElementById('game-board').appendChild(rowDiv)
       let limit = 2*i + 1;
       let row = [];
       for (let j = 0; j < limit; j++) {
@@ -40,38 +40,60 @@ export default class Game {
   }
 
   computerMove() {
-    this.makeMove(this.computerPlayer.selectTokens(this.tokens))
+    this.computerPlayer.selectTokens(this.tokens)
+    this.makeMove()
   }
 
   humanSelect(token) {
     console.log('human move');
-    token.classList.add('token_selected');
     console.log(token.id);
     let row = token.id[0];
     let col = token.id[2];
-    this.humanPlayer.selectToken(this.tokens[row][col]);
+    if (token.classList.contains("token_selected")) {
+      token.classList.remove("token_selected");
+      console.log("go deselect")
+      this.humanPlayer.deselectToken(this.tokens[row][col]);
+    } else {
+      
+      console.log("go select")
+      this.humanPlayer.selectToken(this.tokens[row][col], this);
+      token.classList.add('token_selected');
+    }
     console.log(this.tokens);
-    if (this.humanPlayer.selectedTokens.length > 0) {
+    if (this.tokensSelected(this.tokens).length > 0) {
       document.getElementById("make_move").removeAttribute("disabled")
+    } else {
+      document.getElementById("make_move").setAttribute("disabled", "true")
     }
   }
 
   humanMove() {
-    console.log("tokens...")
-    console.log(this.humanPlayer.selectedTokens)
     this.makeMove(this.humanPlayer.selectedTokens);
     document.getElementById("make_move").setAttribute("disabled", "true")
     this.computerMove();
   }
 
-  makeMove([...selectedTokens]) {
-    for (let token of selectedTokens) {
-      let row = token.row;
-      let col = token.col;
-      this.tokens[row][col].present = false;
+  makeMove() {
+    for (let token of this.tokensSelected(this.tokens)) {
+      token.present = false;
+      token.selected = false;
       document.getElementById(token.id).classList.add('token_taken');
     }
   }
+
+  tokensSelected(tokens) {
+    let selectedTokens = []
+    for (let row of tokens) {
+      for (let token of row) {
+        if (token.selected) {
+          selectedTokens.push(token)
+        }
+      }
+    }
+    return selectedTokens
+  }
+
+
 }
 
 
