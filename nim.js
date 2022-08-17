@@ -35,7 +35,6 @@ function showInstructions() {
 }
 
 function showNewGame() {
-  console.log('shownewgame')
   let newGameVisible
   document.getElementsByClassName("newgame_container")[0].classList.add("newgame_on")
   newGameVisible = true
